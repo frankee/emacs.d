@@ -223,4 +223,7 @@ ARCHIVE is the string name of the package archive.")
 (require-package 'buffer-move)
 (require-package 'go-mode)
 
+(require-package 'protobuf-mode)
+(require-package 'yaml-mode)
+
 (provide 'init-elpa)
