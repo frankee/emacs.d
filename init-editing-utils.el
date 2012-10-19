@@ -100,6 +100,26 @@
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 
+;; set new method of kill a whole line
+(defadvice kill-ring-save (before slick-copy activate compile)
+  "When called interactively with no active region, copy the current line."
+  (interactive
+   (if mark-active
+       (list (region-beginning) (region-end))
+     (progn
+       (message "Current line is copied.")
+       (list (line-beginning-position) (line-beginning-position 2))))))
+
+(defadvice kill-region (before slick-copy activate compile)
+  "When called interactively with no active region, cut the current line."
+  (interactive
+   (if mark-active
+       (list (region-beginning) (region-end))
+     (progn
+       (list (line-beginning-position) (line-beginning-position 2))))))
+
+(global-set-key (kbd "C-w") 'kill-region)
+(global-set-key (kbd "M-w") 'kill-ring-save)
 
 (defun duplicate-line ()
   (interactive)

@@ -62,4 +62,12 @@
   )
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
+(add-hook 'gdb-mode-hook '(lambda ()
+                            (define-key c-mode-base-map [(f5)] 'gud-go)
+                            (define-key c-mode-base-map [(f6)] 'gud-step)
+                            (define-key c-mode-base-map [(f7)] 'gud-next)
+                            (define-key c-mode-base-map [(f9)] 'gud-break)
+                            (define-key c-mode-base-map [(f11)] 'gud-finish)
+                            (define-key c-mode-base-map [(f12)] 'gud-until)))
+
 (provide 'init-cc-mode)
