@@ -1,5 +1,0 @@
-(require 'ctags)
-(global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table)
-(setq tags-revert-without-query t)
-(global-set-key (kbd "M-.")  'ctags-search)
-(provide 'init-ctags)
